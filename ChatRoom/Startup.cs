@@ -19,15 +19,14 @@ namespace Microsoft.Azure.SignalR.Samples.ChatRoom
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSignalR()
-                    .AddAzureSignalR();
+            services.AddSignalR();
         }
 
         public void Configure(IApplicationBuilder app)
         {
             app.UseMvc();
             app.UseFileServer();
-            app.UseAzureSignalR(routes =>
+            app.UseSignalR(routes =>
             {
                 routes.MapHub<Chat>("/chat");
             });
